@@ -1,4 +1,12 @@
 # Kubernetes-Production-Level-Project
+
+Pre-requisites : Git, Linux, Jenkins, Docker, DockerHub Account, Ansible,Kubernetes
+
+3 ec2 instances :
+----------------------------------------------
+1. Jenkins 
+2.Ansible  
+3.Webapp
 ==================
 To See file or code will be pushed into Jenkins folder
 cd /var/lib/jenkins/workspace/K8S-Project-Pipeline
