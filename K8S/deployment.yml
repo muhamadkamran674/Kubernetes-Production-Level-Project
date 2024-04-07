@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8sprod-project
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: k8sprod-project
+  template:
+    metadata:
+      labels:
+        app: k8sprod-project
+    spec:
+      containers:
+      - name: k8sprod-project
+        image: muhamadkamran674/k8s-production-project:latest
+        ports:
+        - containerPort: 80
+
