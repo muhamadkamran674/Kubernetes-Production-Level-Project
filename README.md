@@ -1,37 +1,39 @@
-# Kubernetes-Production-Level-Project
+**Kubernetes Production Level Project Pipeline**
+This repository contains the Jenkins pipeline code for automating the deployment process of a Kubernetes production-level project. The pipeline performs the following steps:
 
-Pre-requisites : Git, Linux, Jenkins, Docker, DockerHub Account, Ansible,Kubernetes
+**Git Code Phase:** Fetches the code from the specified GitHub repository branch.
+**Push Docker File to Ansible Through SSH:** Copies the Dockerfile and related files to the Ansible server for further processing.
+**Docker Build Image:** Builds a Docker image using the Dockerfile on the remote Ansible server.
+**Docker Image Tagging:** Tags the Docker image with version and latest tags.
 
-3 ec2 instances :
-----------------------------------------------
-1. Jenkins 
-2.Ansible  
-3.Webapp
-==================
-To See file or code will be pushed into Jenkins folder
-cd /var/lib/jenkins/workspace/K8S-Project-Pipeline
+**Pushing Docker Image to Docker Hub:** Pushes the tagged Docker images to Docker Hub repository.
 
-==================
-<---------WebHook Apply------>
-Now Next Step on Jenkins is Go To:
-1)Configure of Dashboard
-2)Go to Build Triggers
-2)Click on "GitHub hook trigger for GITScm polling"
+**Copy Files From Ansible Server To Kubernetes:** Copies necessary files from the Ansible server to the Kubernetes server for deployment.
 
-===================
-Now Goto Github repo section
-1)Click on Settings
-2)Click on WebHook
-3)Add a Webhook
-4)In Payload  Url "Add jenkins URL:http://16.170.140.12:8080/github-webhook/"
-5)ContentType "application/json"
-6)In next Step is Secret
-7)Click on Jenkins User Profile & Click on Configure
-8) In Api Section to Generate Token & copy it
-9) Paste into Github
+**Prerequisites**
+Jenkins server with necessary plugins installed.
+Ansible server configured with SSH access.
+Docker installed on both Ansible and Kubernetes servers.
+Kubernetes server configured with SSH access.
+Pipeline Configuration
+Agent: The pipeline is configured to run on any available agent.
+
+**Stages:**
+
+**Git Code Phase:** Fetches the code from the specified GitHub repository.
+**Push Docker File to Ansible Through SSH:** Transfers Dockerfile and related files to the Ansible server.
+**Docker Build Image:** Builds the Docker image on the Ansible server.
+**Docker Image Tagging:** Tags the Docker image with appropriate versioning.
+**Pushing Docker Image to Docker Hub**: Pushes Docker image to Docker Hub repository.
+**Copy Files From Ansible Server To Kubernetes**: Copies necessary files from Ansible server to Kubernetes server.
+
+**Usage**
+Configure Jenkins with necessary credentials for SSH access and Docker Hub login.
+Create a new pipeline job in Jenkins.
+Copy and paste the provided Jenkins pipeline code into the job configuration.
+Save the configuration and trigger the pipeline manually or automatically as required.
+Contributing
+Contributions are welcome! Please feel free to submit issues, fork the repository, and submit pull requests.
 
 
 
- ssh-keygen
-then cat /root/.ssh/id_rsa 
-private file you have to paste
