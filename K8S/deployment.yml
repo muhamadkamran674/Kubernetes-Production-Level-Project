@@ -15,6 +15,7 @@ spec:
       containers:
       - name: k8sprod-project
         image: muhamadkamran674/k8s-production-project:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
 
